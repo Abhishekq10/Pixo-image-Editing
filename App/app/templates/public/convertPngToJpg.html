@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Convert PNGs to jpg</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+		integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+	<!-- Static navbar -->
+	<nav class="navbar navbar-light" style="background-color: #e3effd86;">
+		<a href="/"> <span class="navbar-brand mb-0 h1">Tools</span></a>
+		<a href="/sign-out"><button type="button" class="btn btn-outline-danger">Sign out</button></a>
+	</nav>
+
+
+	<div class="container uploadBox">
+		<form action="/convert-Png-To-Jpg" method="POST" enctype="multipart/form-data">
+
+			<div class="form-group">
+				<label>Select image</label>
+				<div class="custom-file">
+					<input type="file" class="custom-file-input" name="image" id="image" multiple>
+					<label class="custom-file-label" for="image">Select image...</label>
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-outline-primary btn-light">Upload</button>
+	</div>
+	</form>
+	<div class="container boxy section1">
+		<div class="display-4">Start Conversion</div>
+		<div class="lead">
+			Convert PNG files to JPG for saving on file size easily.
+		</div>
+		<form action="/converter" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-info btn-light">Convert</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="container boxy">
+		<form action="/get-img" method="GET">
+			<div class="lead"> Convert all the png files into JPG format to save on space and quality,
+				<br>Download the result here</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-warning btn-outline-success">Download
+					<i class="fas fa-download"></i></button>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>

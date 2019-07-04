@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add watermark</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/watermarker.js') }}"></script>
+    <style>
+        .uploadBox {
+            border: 4px dashed gray;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3effd86;">
+        <a href="/"> <span class="navbar-brand mb-0 h1">Tools</span></a>
+        <a href="/sign-out"><button type="button" class="btn btn-outline-danger">Sign out</button></a>
+    </nav>
+    <div class="container uploadBox">
+        <form action="/watermark-on-image" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Select image</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image" id="image" multiple>
+                    <label class="custom-file-label" for="image">Select image...</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-light btn-outline-primary">Upload</button>
+    </div>
+    </form>
+
+    <div class="container boxy" id="section2">
+        <form action="/put-watermark" method="post" enctype="multipart/form-data">
+            <div class="">
+                <h3>Put a watermark on your image, with a variety of options</h3>
+            </div>
+            <div class="">
+                <div class="form-group row">
+                    <label class="form-label" for="watermarkText">Text to be written :
+                        &nbsp;&nbsp;</label>
+                    <input class="form-control col-3" type="text" placeholder="watermark" name="watermarkText"
+                        id="watermarkText" value=""></input>
+                </div>
+                <div class="form-group row input-group">
+                    <label for="fontFace">Select Font for watermark: </label>
+                    <div class="radio col-3">
+                        <label><input type="radio" name="fontFace" value="arial" checked>
+                            <font face="arial" size="16">Arial</font>
+                        </label>
+                    </div>
+                    <div class="radio col-3">
+                        <label><input type="radio" name="fontFace" value="impact">
+                            <font face="impact" size="16">Impact</font>
+                        </label>
+                    </div>
+                    <div class="radio col-3">
+                        <label><input type="radio" name="fontFace" value="verdana">
+                            <font face="verdana" size="16">Verdana</font>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label" for="fontSize">Font size for watemark (in Pixels): &nbsp;&nbsp;</label>
+                    <input class="form-control col-2" placeholder="font size" type="number" name="fontSize" value="50"
+                        min="10"></input>
+                    <div class="lead">
+                        &nbsp; &nbsp; (Use a font size suitable accoring to your image size)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label" for="watermarkColor">Select color for watermark: &nbsp;&nbsp;</label>
+                    <input class="form-control col-2" placeholder="font size" type="color" name="watermarkColor"
+                        id="watermarkColor">
+                    </input>
+                    &nbsp;&nbsp;
+                    <label class="form-label" for="watermarkOpacity">Select opacity level: &nbsp;&nbsp;</label>
+                    <input class="form-control col-2" type="number" name="watermarkOpacity" id="watermarkOpacity"
+                        value="50" min="0" max="100">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">%</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="my-1 mr-2" for="watermarkPosition">Position Preference: </label>
+                    <select class="custom-select col-3 my-1 mr-sm-2" id="markPosition" name="watermarkPosition">
+                        <option selected>Choose...</option>
+                        <option value="top-left">Top-left</option>
+                        <option value="top-right">Top-right</option>
+                        <option value="center">Center</option>
+                        <option value="bottom-left">Bottom-left</option>
+                        <option value="bottom-right">Bottom-right</option>
+                    </select>
+                </div>
+
+            </div>
+
+    </div>
+    <center>
+        <div class="form-group">
+            <input class="btn btn-light btn-outline-info" type="submit" value="Add Watermark">
+        </div>
+    </center>
+    </form>
+    <div class="container boxy">
+        <form action="/get-img" method="GET">
+            <div class="lead">Download the result here</div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-outline-success">Download
+                    <i class="fas fa-download"></i></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

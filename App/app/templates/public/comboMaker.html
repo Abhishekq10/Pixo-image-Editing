@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Combo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".linearOptions").hide();
+            $(".gridOptions").hide();
+            $("#repeatLinear").hide();
+
+            $('input[type="checkbox"]').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $("#repeatLinear").show(500);
+                } else if ($(this).prop("checked") == false) {
+                    $("#repeatLinear").hide(500);
+                }
+            });
+
+            $("#comboType").change(function () {
+                var type = $(this).children("option:selected").val();
+                if (type == "grid") {
+                    $(".linearOptions").hide(500);
+                    $(".gridOptions").show(500);
+                } else {
+                    $(".linearOptions").show(500);
+                    $(".gridOptions").hide(500);
+                }
+            });
+        });
+    </script>
+    <style>
+        .uploadBox {
+            border: 4px dashed gray;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3effd86;">
+        <a href="/"> <span class="navbar-brand">Tools</span></a>
+        <a href="/sign-out"><button type="button" class="btn btn-outline-danger">Sign out</button></a>
+    </nav>
+    <div class="container uploadBox">
+        <form action="/create-combo" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Select image</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image" id="image" multiple>
+                    <label class="custom-file-label" for="image">Select image...</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-light btn-outline-primary">Upload</button>
+    </div>
+    </form>
+
+    <div class="container boxy" id="section2">
+        <form action="/combining" method="post" enctype="multipart/form-data">
+            <div class="lead">
+                Create a linear or grid montage of images with a variety of customizations
+            </div>
+            <div class="form-group row">
+                <label class="my-1 mr-2" for="comboType">Combo-type Preference: </label>
+                <select class="custom-select col-3 my-1 mr-sm-2" id="comboType" name="comboType">
+                    <option selected>Choose...</option>
+                    <option value="linear">Linear</option>
+                    <option value="grid">Grid</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <input class="form-control col-1" type="checkbox" name="repeatImage" id="repeatImage">
+                <label class="my-1 mr-2" for="repeatImage">repeat same image on the combo?</label>
+                <br>
+
+            </div>
+            <div class="form-group">
+                <label class="my-1 mr-2" for="comboType">
+                    (If repeat is selected and you upload multiple images, the first image shall
+                    be used for the montage)</label>
+            </div>
+            <div class="linearOptions">
+                <div class="lead">
+                    Options for Linear Combo
+                </div>
+                <div class="form-group row" id="repeatLinear">
+                    <label class="form-label" for="repeatCount">No of rpetitions for image on linear combo:
+                        &nbsp;&nbsp;</label>
+                    <input class="form-control col-2" placeholder="repetitions" type="number" name="repeatCount"
+                        value="2" min="1"></input>
+                </div>
+                <div class="form-group row">
+                    <label class="form-label" for="overlap">Select overlap percentage: &nbsp;&nbsp;</label>
+                    <input class="form-control col-2" type="number" name="overlap" id="overlap" value="0" min="0"
+                        max="100">
+                    <div class="input-group-append">
+                        <div class="input-group-text">%</div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="my-1 mr-2" for="direction">Direction for linear combo: &nbsp;&nbsp;</label>
+                    <select class="custom-select col-3" id="direction" name="direction">
+                        <option value="horizontal">Horizontal</option>
+                        <option value="vertical">Vertical</option>
+                    </select>
+                </div>
+            </div>
+            <div class="gridOptions">
+                <div class="lead">
+                    Options for Grid Combo
+                </div>
+                <div class="form-group row">
+                    <label class="form-label">Give the size for Grid/Montage: &nbsp;&nbsp;</label>
+                    <label for="gridHeight" class="form-label">Height:&nbsp;</label>
+                    <input type="number" class="form-control col-1" name="gridHeight" id="gridHeight" min="1" value="1">
+                    <label for="gridWidth" class="form-label">&nbsp;X&nbsp;Width:&nbsp;</label>
+                    <input type="number" class="form-control col-1" name="gridWidth" id="gridWidth" min="1" value="1">
+                </div>
+            </div>
+    </div>
+    <center>
+        <div class="form-group">
+            <input class="btn btn-light btn-outline-info" type="submit" value="Create Combo">
+        </div>
+    </center>
+    </form>
+    <div class="container boxy">
+        <form action="/get-image/output.png" method="GET">
+            <div class="lead">Download the result here</div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-outline-success">Download <i
+                        class="fas fa-download"></i></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

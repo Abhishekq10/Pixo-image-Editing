@@ -1,0 +1,69 @@
+Install compatible version of python 3.6+(for most linux, mac systems python comes pre-installed and set)
+
+Setup pip(Pip Installs Packages) with default installer(executable or web based)
+pip can be additionally installed from file at https://bootstrap.pypa.io/get-pip.py
+Save the file by save page as get-pip.py
+then run cmd in the same direcory as downloaded file and run the command:
+	python get-pip.py
+Verify pip installation with : pip -V
+
+For installing required dependencies and packages:
+1. Run Command Prompt with administrator mode/permissions
+2. check python is added to path, type "python" in cmd/terminal, it should load Python idle. quit with quit() or Ctrl+Z command
+3. Run follwing pip commands for installation:
+	1. python -m pip install --upgrade pip
+	2. pip install numpy
+	3. pip install opencv-python
+	4. similarily install all packages listed in requirements.txt . These are all pre-requisites.
+	5. (optional) pip install future or pip install modernize (for forward and backward compatibility with versions 2 and 3)
+
+For above steps, python envirnment variable setup is esential.(Process depends on system type and OS version).
+a new environment can be created using the command: py -m venv env
+
+A virtual environment folder is already setup in the App, which can be activated by:
+1. on Windows machine- open cmd and navigate to file path
+run command: .\env\Scripts\activate
+2. on linux or Mac - open trminal and navigate to path
+run command: source env/bin/activate
+
+The app itself can be setup and run from flask:
+1. Make sure flask is installed, then navigate to root folder for app
+2. setup flask environmment with:
+	export FLASK_APP=run.py
+	export FLASK_ENV=development
+(on windows machine use "set" instead of "export")
+3. now the app can be run by : Flask run
+(on development mode the app runs at localhost port 5000 or 127.0.0.1:5000/, this can be changed easily from run.py)
+
+App structure is as follows:
+├───app
+│   ├───static
+│   │   ├───css
+│   │   ├───img
+│   │   │   ├───down
+│   │   │   └───uploads
+│   │   └───js
+│   └───templates
+│       ├───admin
+│       │   └───templates
+│       ├───macros
+│       └───public
+│           └───templates
+│   
+├───env
+│   ├───Include
+│   ├───Lib
+│   │   └───site-packages
+│   └───Scripts
+├───lib
+│   └───__pycache__
+└───ReadMe
+1. ReadMe forlder for instructions and requirements
+2. lib folder for helper packages created as tools for the app
+3. env foldeer for virtual environment setup and variables
+4. app folder:
+	static:
+		1. css: to store css files for rendered web pages
+		2. js: to store js files for rendered web pages
+		3. img: for images to be displayed on pages, also to store uploaded and download images from tools
+	templates: web pages rendered, classified as per access

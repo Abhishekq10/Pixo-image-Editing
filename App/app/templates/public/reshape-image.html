@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reshape image</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/squarify.js') }}"></script>
+    <style>
+        .uploadBox {
+            border: 4px dashed gray;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: #e3effd86;">
+            <a href="/"> <span class="navbar-brand mb-0 h1">Tools</span></a>
+        <a href="/sign-out"><button type="button" class="btn btn-outline-danger">Sign out</button></a>
+    </nav>
+    <div class="container uploadBox">
+        <form action="/reshape-image" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label>Select image</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="image" id="image" multiple>
+                    <label class="custom-file-label" for="image">Select image...</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary btn-light">Upload</button>
+    </div>
+    </form>
+
+    <div class="container boxy">
+        <p>
+            <h3> Simply convert to Square or go through an advanced process for best results</h3>
+            (better for images with non-centered obects)
+        </p>
+        <div class="form-group row">
+            <label class="form-label" for="typeSelect "> Select a type: &nbsp;&nbsp;</label>
+            <select class="form-control col-4" name="" id="typeSelect">
+                <option value="simple">Simple</option>
+                <option value="advanced">Advanced</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="container boxy" id="section2">
+        <form action="/reshaping" method="post" enctype="multipart/form-data">
+            <div class="lead">
+                Tools for advanced reshaping:
+            </div>
+            <div class="form-group row">
+                <label class="form-label" for="marginPer">Input margin over trimed object: &nbsp;&nbsp;</label>
+                <input class="form-control col-2" type="number" name="marginPer" id="MarginPer" value="0"></input>
+            </div>
+            <div class="form-group row">
+                <label class="form-label" for="marginPer">Change the Aspect ratio for image: &nbsp;&nbsp;</label>
+                <input class="form-control col-1" type="number" name="aspectWidth" id="aspectWidth" value="1"></input>
+                <span>&nbsp;:&nbsp;</span>
+                <input class="form-control col-1" type="number" name="aspectHeight" id="aspectHeight" value="1"></input>
+            </div>
+
+    </div></strong>
+    <center>
+        <div class="form-group">
+            <input class="btn btn-outline-info btn-light" type="submit" value="convert-to-square">
+        </div>
+        </form>
+    </center>
+
+    <div class="container boxy">
+        <form action="/get-img" method="GET">
+            <div class="lead">Download the result here</div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-warning btn-outline-success">Download 
+                    <i class="fas fa-download"></i></button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

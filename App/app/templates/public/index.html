@@ -1,0 +1,160 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tools</title>
+    <meta name="description" content="">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <style>
+        body {
+            background: #FC466B;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3F5EFB, #FC466B);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3F5EFB, #FC466B);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="jumbotron jumbotron-fluid bg-transparent">
+        <div class="container ">
+            <h1 class="display-3">Image Editing Tools</h1>
+            <p class="lead display-5">Choose from a variety of tools available here, just the right ones to fit all your
+                needs.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="part col-8 display-4" id="section-head">
+            Basic Tools
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+        <div class=" tool col-md-4 col-sm-4 left">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="convert-Png-To-Jpg">
+                    <div class="wrimagecard-topimage_header" style="background-color:  rgba(51, 105, 232, 0.3)">
+                        <center><i class="fa fa-image" style="color:#3369e8"> </i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Convert PNGs to JPGs
+                            <div class="pull-right badge" id="WrGridSystem"></div>
+                        </h4>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div class="tool col-md-4 col-sm-4 center">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="reshape-image">
+                    <div class="wrimagecard-topimage_header" style="background-color: rgba(96, 230, 19, 0.3)">
+                        <center><i class="fa fa-crop" style="color: #60e613"></i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Reshape Image
+                            <div class="pull-right badge" id="WrThemesIcons"></div>
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="tool col-md-4 col-sm-4 right">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="trim-image">
+                    <div class="wrimagecard-topimage_header" style="background-color:  rgba(247, 71, 40, 0.3)">
+                        <center><i class="fa fa-cut" style="color:#f74728"> </i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Trim Images
+                            <div class="pull-right badge" id="WrInformation"></div>
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class=" tool col-md-4 col-sm-4 left">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="add-margin">
+                    <div class="wrimagecard-topimage_header" style="background-color:  rgba(231, 81, 35, 0.3)">
+                        <center><i class="fa fa-expand" style="color:#e75123"> </i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4> Add frame margin or border
+                            <div class="pull-right badge" id="WrGridSystem"></div>
+                        </h4>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+        <div class="tool col-md-4 col-sm-4 center">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="resize-image">
+                    <div class="wrimagecard-topimage_header" style="background-color: rgba(231, 35, 182, 0.3)">
+                        <center><i class="fa fa-expand-arrows-alt " style="color:#e723b6"></i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Resize Images
+                            <div class="pull-right badge" id="WrThemesIcons"></div>
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="part col-8 display-4" id="section-head">
+            Advanced Tools
+            <hr>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="tool col-md-4 col-sm-4 left">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="watermark-on-image">
+                    <div class="wrimagecard-topimage_header" style="background-color: rgba(7, 114, 163, 0.3)">
+                        <center><i class="fa fa-copyright" style="color:#0772a3"></i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Watermark
+                            <div class="pull-right badge" id="WrThemesIcons"></div>
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="tool col-md-4 col-sm-4 center">
+            <div class="wrimagecard wrimagecard-topimage">
+                <a href="create-combo">
+                    <div class="wrimagecard-topimage_header" style="background-color:  rgba(18, 223, 223, 0.3)">
+                        <center><i class="fa fa-images" style="color:#12dfdf"> </i></center>
+                    </div>
+                    <div class="wrimagecard-topimage_title">
+                        <h4>Combo of Images
+                            <div class="pull-right badge" id="WrInformation"></div>
+                        </h4>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="" async defer></script>
+</body>
+
+</html>
