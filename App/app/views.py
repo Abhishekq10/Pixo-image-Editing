@@ -6,12 +6,12 @@ import cv2
 from app import app
 from lib import convert, reshape_tools, dir_maker, watermark, combo_tools
 
-app.config["IMAGE_UPLOADS"] = "C:/Users/abhis/Desktop/App/app/static/img/uploads" 
+app.config["IMAGE_UPLOADS"] = "/home/site/wwwroot/App/app/static/img/uploads" 
 #full path to uploads folder
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 #specify max file size in bytes
-app.config["CLIENT_IMAGES"] = "C:/Users/abhis/Desktop/App/app/static/img/down"
+app.config["CLIENT_IMAGES"] = "/home/site/wwwroot/App/app/static/img/down"
 #full path to download folder
 app.config["SECRET_KEY"] = "liruhfoi34uhfo8734yot8234h"
 
