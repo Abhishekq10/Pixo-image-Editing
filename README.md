@@ -1,4 +1,4 @@
-#follow the steps in "instructions for setup" to prepare python and flask environments.
+##follow the steps in "instructions for setup" to prepare python and flask environments.
 
 
 After setting up the environment run the app using command: flask run  
